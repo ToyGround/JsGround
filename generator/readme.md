@@ -165,3 +165,29 @@ console.log(iterGen.next()) // { value: 3, done: false }
 
 기존의 while 이라면 무한 반복이 일어 났을건데, 제너레이터는 하나씩 값을 넘기는 특징이 있다.
 
+**하나씩 값을 넘기고, 실행 권한을 외부로 넘겨준다**
+
+
+
+### 제너레이터 응용 (리덕스 사가 형태)
+
+```javascript
+function* saga() {
+    const flowList = ['로딩', '성공', '종료']
+    for (const step of flowList) {
+        console.log(yield step);
+    }
+}
+
+function middleware() {
+    const flowList = ['','로딩시작','패치 성공','종료!']
+    const generator = saga();
+    for (const step of flowList) {
+        console.log(generator.next(step).value)
+    }
+}
+
+middleware();
+```
+
+리덕스사가함수와 사가 미들웨어

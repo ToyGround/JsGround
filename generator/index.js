@@ -46,3 +46,20 @@ const iterGen = iterNum();
 console.log(iterGen.next())
 console.log(iterGen.next())
 console.log(iterGen.next())
+
+function* saga() {
+    const flowList = ['로딩', '성공', '종료']
+    for (const step of flowList) {
+        console.log(yield step);
+    }
+}
+
+function middleware() {
+    const flowList = ['','로딩시작','패치 성공','종료!']
+    const generator = saga();
+    for (const step of flowList) {
+        console.log(generator.next(step).value)
+    }
+}
+
+middleware();

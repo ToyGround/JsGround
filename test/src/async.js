@@ -6,6 +6,7 @@ const USERS = [
 ];
 
 const getUserById = id => {
+  if (id === undefined) throw Error('조회할 ID 값이 입력되지 않았습니다.')
   return new Promise((res) => {
     setTimeout(() => {
       const matchUser = USERS.find(user => user.id === id);

@@ -1,3 +1,4 @@
 node_modules/
 .idea
 .env
+/shopCart/server/data.json
